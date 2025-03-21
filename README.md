@@ -7,17 +7,18 @@ MySQL
 
 Postman
 
-**Update MySQL Passwords in docker-compose.yml**
+**Create a .env file in the same directory as your docker-compose.yml file:**
+Add the following content to .env:
 ```sh
-environment:
-	MYSQL_ROOT_PASSWORD: yourpassword
-	spring.datasource.password=yourpassword
+MYSQL_ROOT_PASSWORD=secret
+SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/golfclub?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+SPRING_DATASOURCE_USERNAME=root
+SPRING_DATASOURCE_PASSWORD=secret
 ```
 
 Build the Project
 ```sh
-mvn install
-mvn clean package
+mvn clean install
 ```
 
 
