@@ -5,8 +5,7 @@ import com.golfclub.member.MemberRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-import java.util.ArrayList; // ✅ Import added
-
+import java.util.ArrayList; 
 @Service
 public class TournamentService {
 
@@ -42,7 +41,7 @@ public class TournamentService {
             Tournament tournament = optionalTournament.get();
             Member member = optionalMember.get();
 
-            // ✅ Fix: Ensure we don't overwrite members list
+          
             if (tournament.getMembers() == null) {
                 tournament.setMembers(new ArrayList<>());
             }

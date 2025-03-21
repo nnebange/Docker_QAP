@@ -7,7 +7,7 @@ import java.util.List;
 import com.golfclub.member.Member;
 
 @Entity
-@Table(name = "tournament")  // ✅ Ensures correct table name mapping
+@Table(name = "tournament")  
 public class Tournament {
 
     @Id
@@ -15,10 +15,10 @@ public class Tournament {
     private Long id;
 
     @Column(name = "start_date")
-    private LocalDate startDate; // ✅ Changed from Date to LocalDate
+    private LocalDate startDate; 
 
     @Column(name = "end_date")
-    private LocalDate endDate; // ✅ Changed from Date to LocalDate
+    private LocalDate endDate; 
 
     private String location;
     private double entryFee;
@@ -27,7 +27,7 @@ public class Tournament {
     @ManyToMany(mappedBy = "tournaments", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Member> members = new ArrayList<>();
 
-    // ✅ Getters and Setters
+    
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

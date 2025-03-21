@@ -29,7 +29,7 @@ public class MemberController {
     @PostMapping
     public ResponseEntity<Member> addMember(@RequestBody Member member) {
         Member savedMember = memberService.saveMember(member);
-        return ResponseEntity.ok(savedMember);  // ✅ Ensure the saved member is returned
+        return ResponseEntity.ok(savedMember);  
     }
 
     @DeleteMapping("/{id}")

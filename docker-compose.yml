@@ -2,13 +2,16 @@ version: '3.8'
 
 services:
   mysql-db:
+    container_name: mysql-golfclub
     image: mysql:8
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: golfclub
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql 
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -16,14 +19,18 @@ services:
       retries: 5
 
   app:
+    container_name: golfclub-api
     build: .
     restart: always
     depends_on:
       mysql-db:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/golfclub?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
     ports:
       - "8080:8080"
+
+volumes:
+  mysql_data:

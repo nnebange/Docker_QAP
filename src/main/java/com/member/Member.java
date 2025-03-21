@@ -9,7 +9,7 @@ import java.util.List;
 import com.golfclub.tournament.Tournament;
 
 @Entity
-@Table(name = "member")  // ✅ Ensures correct table name mapping
+@Table(name = "member")  
 public class Member {
 
     @Id
@@ -20,16 +20,16 @@ public class Member {
     private String address;
     private String email;
 
-    @JsonProperty("phoneNumber")  // ✅ Maps JSON field "phoneNumber" to "phone_number"
-    @Column(name = "phone_number", nullable = false)  // ✅ Ensures correct DB column mapping
+    @JsonProperty("phoneNumber")  
+    @Column(name = "phone_number", nullable = false)  
     private String phoneNumber;
 
-    @JsonProperty("startDate")  // ✅ Maps JSON "startDate" to "start_date"
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")  // ✅ Ensures correct date format
-    @Column(name = "start_date", nullable = false)  // ✅ Ensures correct DB column mapping
-    private LocalDate startDate; // ✅ Changed from Date to LocalDate
+    @JsonProperty("startDate")  
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")  
+    @Column(name = "start_date", nullable = false)  
+    private LocalDate startDate; 
 
-    private int duration; // in months
+    private int duration; 
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
@@ -39,7 +39,7 @@ public class Member {
     )
     private List<Tournament> tournaments = new ArrayList<>();
 
-    // ✅ Getters and Setters
+    
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
