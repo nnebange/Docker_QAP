@@ -7,7 +7,11 @@ MySQL
 
 Postman
 
-**Create a .env file in the same directory as your docker-compose.yml file:**
+**Create a .env file in the same directory as your docker-compose.yml file:** 
+
+NB: I kept the .env file for easing testing but it should be added to .gitignore file
+
+
 Add the following content to .env:
 ```sh
 MYSQL_ROOT_PASSWORD=secret
