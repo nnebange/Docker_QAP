@@ -27,3 +27,19 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+# Ignore Terraform state files in infra
+infra/*.tfstate
+infra/*.tfstate.*
+infra/*.backup
+infra/.terraform/
+infra/.terraform.lock.hcl
+
+# Ignore large files in infra (adjust if needed)
+infra/*.log
+infra/*.tmp
+infra/*.bak
+infra/*.swp
+infra/.DS_Store
+infra/*.tar.gz
+infra/*.zip
